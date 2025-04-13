@@ -14,6 +14,12 @@ from uc3m_money.account_deposit import AccountDeposit
 
 class AccountManager:
     """Class for providing the methods for managing the orders"""
+    # Applied Singleton pattern to AccountManager
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super(AccountManager, cls).__new__(cls)
+        return cls._instance
+
     def __init__(self):
         pass
 
@@ -33,10 +39,10 @@ class AccountManager:
     @staticmethod
     
     def _check_iban_format(iban: str):
-        """Broke down the original IBAN validation logic into two helper methods:
-         _check_iban_format() — uses regex to check IBAN structure 
-         _calculate_check_digits() — implements the modulo 97 algorithm"""
-         
+        # Broke down the original IBAN validation logic into two helper methods:
+        #  _check_iban_format() — uses regex to check IBAN structure 
+        # _calculate_check_digits() — implements the modulo 97 algorithm
+
         """Validates the IBAN structure using regex."""
         pattern = re.compile(r"^ES[0-9]{22}")
         if not pattern.fullmatch(iban):
