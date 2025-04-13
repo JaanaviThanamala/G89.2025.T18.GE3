@@ -18,58 +18,42 @@ class AccountManager:
         pass
 
     @staticmethod
-    def valivan(ic: str):
-        """
-    Calcula el dígito de control de un IBAN español.
+    def validate_iban(iban: str) -> str:
+        """Renamed valvian() to validate_iban to improve clarity and naming consistency """
+        """Validates the format and control digit of a Spanish IBAN."""
+        AccountManager._check_iban_format(iban)
+        expected_check_digits = AccountManager._calculate_check_digits(iban)
+        actual_check_digits = int(iban[2:4])
 
-    Args:
-        ic (str): El IBAN sin los dos últimos dígitos (dígito de control).
-
-    Returns:
-        str: El dígito de control calculado.
-        """
-        mr = re.compile(r"^ES[0-9]{22}")
-        res = mr.fullmatch(ic)
-        if not res:
-            raise AccountManagementException("Invalid IBAN format")
-        iban = ic
-        original_code = iban[2:4]
-        #replacing the control
-        iban = iban[:2] + "00" + iban[4:]
-        iban = iban[4:] + iban[:4]
-
-
-        # Convertir el IBAN en una cadena numérica, reemplazando letras por números
-        iban = (iban.replace('A', '10').replace('B', '11').
-                replace('C', '12').replace('D', '13').replace('E', '14').
-                replace('F', '15'))
-        iban = (iban.replace('G', '16').replace('H', '17').
-                replace('I', '18').replace('J', '19').replace('K', '20').
-                replace('L', '21'))
-        iban = (iban.replace('M', '22').replace('N', '23').
-                replace('O', '24').replace('P', '25').replace('Q', '26').
-                replace('R', '27'))
-        iban = (iban.replace('S', '28').replace('T', '29').replace('U', '30').
-                replace('V', '31').replace('W', '32').replace('X', '33'))
-        iban = iban.replace('Y', '34').replace('Z', '35')
-
-        # Mover los cuatro primeros caracteres al final
-
-        # Convertir la cadena en un número entero
-        int_i = int(iban)
-
-        # Calcular el módulo 97
-        mod = int_i % 97
-
-        # Calcular el dígito de control (97 menos el módulo)
-        dc = 98 - mod
-
-        if int(original_code) != dc:
-            #print(dc)
+        if expected_check_digits != actual_check_digits:
             raise AccountManagementException("Invalid IBAN control digit")
 
-        return ic
+        return iban
 
+    @staticmethod
+    
+    def _check_iban_format(iban: str):
+        """Broke down the original IBAN validation logic into two helper methods:
+         _check_iban_format() — uses regex to check IBAN structure 
+         _calculate_check_digits() — implements the modulo 97 algorithm"""
+         
+        """Validates the IBAN structure using regex."""
+        pattern = re.compile(r"^ES[0-9]{22}")
+        if not pattern.fullmatch(iban):
+            raise AccountManagementException("Invalid IBAN format")
+
+    @staticmethod
+    def _calculate_check_digits(iban: str) -> int:
+        """Calculates the correct IBAN check digits using modulo 97 algorithm."""
+        rearranged_iban = iban[:2] + "00" + iban[4:]
+        rearranged_iban = rearranged_iban[4:] + rearranged_iban[:4]
+
+        alphanum_map = {chr(i): str(10 + i - ord('A')) for i in range(ord('A'), ord('Z') + 1)}
+        numeric_iban = ''.join(alphanum_map.get(c, c) for c in rearranged_iban)
+
+        mod_result = int(numeric_iban) % 97
+        return 98 - mod_result
+    
     def validate_concept(self, concept: str):
         """regular expression for checking the minimum and maximum length as well as
         the allowed characters and spaces restrictions
@@ -107,8 +91,8 @@ class AccountManager:
                          amount: float)->str:
         """first method: receives transfer info and
         stores it into a file"""
-        self.valivan(from_iban)
-        self.valivan(to_iban)
+        self.validate_iban(from_iban)
+        self.validate_iban(to_iban)
         self.validate_concept(concept)
         mr = re.compile(r"(ORDINARY|INMEDIATE|URGENT)")
         res = mr.fullmatch(transfer_type)
@@ -186,7 +170,7 @@ class AccountManager:
             raise AccountManagementException("Error - Invalid Key in JSON") from e
 
 
-        deposit_iban = self.valivan(deposit_iban)
+        deposit_iban = self.validate_iban(deposit_iban)
         myregex = re.compile(r"^EUR [0-9]{4}\.[0-9]{2}")
         res = myregex.fullmatch(deposit_amount)
         if not res:
@@ -235,7 +219,7 @@ class AccountManager:
 
     def calculate_balance(self, iban:str)->bool:
         """calculate the balance for a given iban"""
-        iban = self.valivan(iban)
+        iban = self.validate_iban(iban)
         t_l = self.read_transactions_file()
         iban_found = False
         bal_s = 0
