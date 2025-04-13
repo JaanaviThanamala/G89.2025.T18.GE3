@@ -174,3 +174,30 @@ class AccountManager:
         self._save_json_file(DEPOSITS_STORE_FILE, deposits)
 
         return deposit_obj.deposit_signature
+
+    def calculate_balance(self, iban: str) -> bool:
+        """calculate the balance for a given iban"""
+        iban = self.validate_iban(iban)
+        transfer_list = self._load_json_file(TRANSACTIONS_STORE_FILE)
+        iban_found = False
+        balance_sum = 0
+
+        for transaction in transfer_list:
+            if transaction["IBAN"] == iban:
+                balance_sum += float(transaction["amount"])
+                iban_found = True
+
+        if not iban_found:
+            raise AccountManagementException("IBAN not found")
+
+        last_balance = {
+            "IBAN": iban,
+            "time": datetime.timestamp(datetime.now(timezone.utc)),
+            "BALANCE": balance_sum
+        }
+
+        balances = self._load_json_file(BALANCES_STORE_FILE)
+        balances.append(last_balance)
+        self._save_json_file(BALANCES_STORE_FILE, balances)
+
+        return True
