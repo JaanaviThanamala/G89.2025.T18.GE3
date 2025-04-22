@@ -4,9 +4,9 @@ import json
 from datetime import datetime, timezone
 from uc3m_money.account_management_exception import AccountManagementException
 from uc3m_money.account_management_config import (TRANSFERS_STORE_FILE,
-                                        DEPOSITS_STORE_FILE,
-                                        TRANSACTIONS_STORE_FILE,
-                                        BALANCES_STORE_FILE)
+                                                  DEPOSITS_STORE_FILE,
+                                                  TRANSACTIONS_STORE_FILE,
+                                                  BALANCES_STORE_FILE)
 
 from uc3m_money.transfer_request import TransferRequest
 from uc3m_money.account_deposit import AccountDeposit
@@ -62,7 +62,7 @@ class AccountManager:
 
         mod_result = int(numeric_iban) % 97
         return 98 - mod_result
-    
+
     def validate_concept(self, concept: str):
         """regular expression for checking the minimum and maximum length as well as
         the allowed characters and spaces restrictions
@@ -71,7 +71,7 @@ class AccountManager:
 
         res = myregex.fullmatch(concept)
         if not res:
-            raise AccountManagementException ("Invalid concept format")
+            raise AccountManagementException("Invalid concept format")
 
     def validate_transfer_date(self, t_d):
         """validates the arrival date format  using regex"""
@@ -91,12 +91,13 @@ class AccountManager:
         if my_date.year < 2025 or my_date.year > 2050:
             raise AccountManagementException("Invalid date format")
         return t_d
-    #pylint: disable=too-many-arguments
+
+    # pylint: disable=too-many-arguments
     # New helper for transfer type validation
     def _validate_transfer_type(self, transfer_type: str):
         if not re.fullmatch(r"(ORDINARY|INMEDIATE|URGENT)", transfer_type):
             raise AccountManagementException("Invalid transfer type")
-    
+
     # New helper for transfer amount validation
     def _validate_transfer_amount(self, amount: float):
         """Validates the transfer amount format and range."""
@@ -114,7 +115,7 @@ class AccountManager:
 
         return float_amount
 
-    #Extracted reusable JSON loader
+    # Extracted reusable JSON loader
     def _load_json_file(self, path):
         """Loads JSON data from a file, returning an empty list if not found."""
         try:
@@ -136,10 +137,10 @@ class AccountManager:
 
     def transfer_request(self, from_iban, to_iban, concept, transfer_type, date, amount):
         """Process a transfer request between accounts.
-        
+
         Validates all input parameters and creates a transfer request record.
         """
-        #Simplified long function using helpers above
+        # Simplified long function using helpers above
         self.validate_iban(from_iban)
         self.validate_iban(to_iban)
         self.validate_concept(concept)
@@ -164,7 +165,7 @@ class AccountManager:
 
     def deposit_into_account(self, input_file: str) -> str:
         """Process a deposit into an account from a JSON file input.
-        
+
         Returns the deposit signature upon successful processing.
         """
         # Simplified deposit logic using shared helpers
