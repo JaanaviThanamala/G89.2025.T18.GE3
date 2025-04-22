@@ -27,8 +27,10 @@ class AccountManager:
 
     @staticmethod
     def validate_iban(iban: str) -> str:
-        """Renamed valvian() to validate_iban to improve clarity and naming consistency """
-        """Validates the format and control digit of a Spanish IBAN."""
+        """Validates the format and control digit of a Spanish IBAN.
+
+        Note: Renamed from valvian() to improve clarity and naming consistency.
+        """
         AccountManager._check_iban_format(iban)
         expected_check_digits = AccountManager._calculate_check_digits(iban)
         actual_check_digits = int(iban[2:4])
@@ -39,10 +41,9 @@ class AccountManager:
         return iban
 
     @staticmethod
-    
     def _check_iban_format(iban: str):
         # Broke down the original IBAN validation logic into two helper methods:
-        #  _check_iban_format() — uses regex to check IBAN structure 
+        #  _check_iban_format() — uses regex to check IBAN structure
         # _calculate_check_digits() — implements the modulo 97 algorithm
 
         """Validates the IBAN structure using regex."""
@@ -98,6 +99,7 @@ class AccountManager:
     
     # New helper for transfer amount validation
     def _validate_transfer_amount(self, amount: float):
+        """Validates the transfer amount format and range."""
         try:
             float_amount = float(amount)
         except ValueError as exc:
@@ -114,6 +116,7 @@ class AccountManager:
 
     #Extracted reusable JSON loader
     def _load_json_file(self, path):
+        """Loads JSON data from a file, returning an empty list if not found."""
         try:
             with open(path, "r", encoding="utf-8", newline="") as file:
                 return json.load(file)
@@ -124,6 +127,7 @@ class AccountManager:
 
     # Extracted reusable JSON writer
     def _save_json_file(self, path, data):
+        """Saves data to a JSON file."""
         try:
             with open(path, "w", encoding="utf-8", newline="") as file:
                 json.dump(data, file, indent=2)
@@ -131,6 +135,10 @@ class AccountManager:
             raise AccountManagementException("Error writing to JSON file") from ex
 
     def transfer_request(self, from_iban, to_iban, concept, transfer_type, date, amount):
+        """Process a transfer request between accounts.
+        
+        Validates all input parameters and creates a transfer request record.
+        """
         #Simplified long function using helpers above
         self.validate_iban(from_iban)
         self.validate_iban(to_iban)
@@ -139,11 +147,14 @@ class AccountManager:
         self.validate_transfer_date(date)
         float_amount = self._validate_transfer_amount(amount)
 
-        request = TransferRequest(from_iban, to_iban, concept, transfer_type, date, amount)
+        request = TransferRequest(from_iban, to_iban, concept, transfer_type, date, float_amount)
         transfers = self._load_json_file(TRANSFERS_STORE_FILE)
 
         for t in transfers:
-            if all(t[key] == getattr(request, key) for key in ["from_iban", "to_iban", "transfer_date", "transfer_amount", "transfer_concept", "transfer_type"]):
+            # Check if all relevant fields match the new request
+            transfer_keys = ["from_iban", "to_iban", "transfer_date",
+                             "transfer_amount", "transfer_concept", "transfer_type"]
+            if all(t[key] == getattr(request, key) for key in transfer_keys):
                 raise AccountManagementException("Duplicated transfer in transfer list")
 
         transfers.append(request.to_json())
@@ -152,6 +163,10 @@ class AccountManager:
         return request.transfer_code
 
     def deposit_into_account(self, input_file: str) -> str:
+        """Process a deposit into an account from a JSON file input.
+        
+        Returns the deposit signature upon successful processing.
+        """
         # Simplified deposit logic using shared helpers
         input_data = self._load_json_file(input_file)
         try:
