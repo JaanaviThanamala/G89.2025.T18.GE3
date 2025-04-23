@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test_calculate_balance_tests.TestCalculateBalance-20250423161649" tests="7" file="test_calculate_balance_tests.py" time="0.006" timestamp="2025-04-23T16:16:49" failures="1" errors="0" skipped="0">
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_balance_file_not_json" time="0.001" timestamp="2025-04-23T16:16:49"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_calculate_balance_1" time="0.002" timestamp="2025-04-23T16:16:49"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_file_iban_not_found" time="0.000" timestamp="2025-04-23T16:16:49"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_file_not_json" time="0.000" timestamp="2025-04-23T16:16:49"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_file_skip_loop" time="0.001" timestamp="2025-04-23T16:16:49"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_file_wrong_iban_number" time="0.000" timestamp="2025-04-23T16:16:49"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_file_not_found" time="0.001" timestamp="2025-04-23T16:16:49">
+		<failure type="AssertionError" message="True != False : IBAN not found"><![CDATA[Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 58, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 634, in run
+    self._callTestMethod(testMethod)
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    if method() is not None:
+    ^^^^^^^^^^^^^^^^^
+  File "/Users/aryanverma/Desktop/code/G89.2025.T18.GE3/src/unittest/python/test_calculate_balance_tests.py", line 100, in test_file_not_found
+    self.assertEqual(True,res,msg)
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 885, in assertEqual
+    assertion_func(first, second, msg=msg)
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 878, in _baseAssertEqual
+    raise self.failureException(msg)
+    ^^^^^^^^^^^^^^^^^
+AssertionError: True != False : IBAN not found
+]]></failure>
+	</testcase>
+</testsuite>
