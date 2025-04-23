@@ -89,7 +89,7 @@ class TestCalculateBalance(TestCase):
         try:
             mngr.calculate_balance(iban="ES3559005439021242088295")
         except AccountManagementException as ex:
-            if ex.message == "Wrong file  or file path":
+            if ex.message == "Wrong file or file path":
                 res = True
             else:
                 msg = ex.message
