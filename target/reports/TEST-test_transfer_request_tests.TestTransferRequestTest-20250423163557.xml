@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test_transfer_request_tests.TestTransferRequestTest-20250423163557" tests="5" file="test_transfer_request_tests.py" time="0.131" timestamp="2025-04-23T16:35:57" failures="0" errors="0" skipped="0">
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_duplicated_transfer_test" time="0.008" timestamp="2025-04-23T16:35:57"/>
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_parametrized_cases_tests" time="0.112" timestamp="2025-04-23T16:35:57"/>
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_transfer_for_today" time="0.004" timestamp="2025-04-23T16:35:57"/>
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_transfer_for_tomorrow" time="0.003" timestamp="2025-04-23T16:35:57"/>
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_transfer_yesterday_test" time="0.003" timestamp="2025-04-23T16:35:57"/>
+</testsuite>

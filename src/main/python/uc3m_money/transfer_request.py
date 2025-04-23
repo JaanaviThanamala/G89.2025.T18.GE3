@@ -8,11 +8,11 @@ class TransferRequest:
     #pylint: disable=too-many-arguments
     def __init__(self,
                  from_iban: str,
-                 transfer_type: str,
-                 to_iban:str,
-                 transfer_concept:str,
-                 transfer_date:str,
-                 transfer_amount:float):
+                 to_iban: str,
+                 transfer_concept: str,
+                 transfer_date: str,
+                 transfer_amount: float,
+                 transfer_type: str):
         self.__from_iban = from_iban
         self.__to_iban = to_iban
         self.__transfer_type = transfer_type

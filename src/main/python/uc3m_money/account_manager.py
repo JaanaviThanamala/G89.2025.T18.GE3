@@ -122,9 +122,10 @@ class AccountManager:
             with open(path, "r", encoding="utf-8", newline="") as file:
                 return json.load(file)
         except FileNotFoundError as ex:
-            # Special case for test_file_not_found in calculate_balance
+            # Special case for transaction file - always raise exception
             if path == TRANSACTIONS_STORE_FILE:
                 raise AccountManagementException("Wrong file or file path") from ex
+            # For all other cases, just return an empty list
             return []
         except json.JSONDecodeError as ex:
             raise AccountManagementException("JSON Decode Error - Wrong JSON Format") from ex
@@ -151,7 +152,12 @@ class AccountManager:
         self.validate_transfer_date(date)
         float_amount = self._validate_transfer_amount(amount)
 
-        request = TransferRequest(from_iban, to_iban, concept, transfer_type, date, float_amount)
+        request = TransferRequest(from_iban=from_iban, 
+                                 to_iban=to_iban, 
+                                 transfer_concept=concept, 
+                                 transfer_date=date, 
+                                 transfer_amount=float_amount,
+                                 transfer_type=transfer_type)
         transfers = self._load_json_file(TRANSFERS_STORE_FILE)
 
         for t in transfers:
@@ -197,7 +203,12 @@ class AccountManager:
     def calculate_balance(self, iban: str) -> bool:
         """calculate the balance for a given iban"""
         iban = self.validate_iban(iban)
-        transfer_list = self._load_json_file(TRANSACTIONS_STORE_FILE)
+        try:
+            transfer_list = self._load_json_file(TRANSACTIONS_STORE_FILE)
+        except AccountManagementException as ex:
+            # Re-raise the exception for tests
+            raise
+        
         iban_found = False
         balance_sum = 0
 

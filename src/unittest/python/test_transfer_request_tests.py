@@ -189,39 +189,40 @@ class TestTransferRequestTest(TestCase):
         # if found is False , this assert fails
         self.assertTrue(found)
 
-        @freeze_time("2025/03/22 13:00:00")
-        def test_transfer_for_tomorrow(self):
-            iban_from = "ES6211110783482828975098"
-            # From_iban;to_iban;concept;type;date;amount;RESULT
-            iban_to = "ES8658342044541216872704"
-            transfer_type = "ORDINARY"
-            transfer_amount = 10.0
-            transfer_date = "23/03/2025"
-            transfer_concept = "Testing duplicated transfers"
-            mngr = AccountManager()
-            res = mngr.transfer_request(from_iban=iban_from,
-                                        to_iban=iban_to,
-                                        transfer_type=transfer_type,
-                                        amount=transfer_amount,
-                                        date=transfer_date,
-                                        concept=transfer_concept)
-            self.assertEqual("b04ac19f692944771fc66c97b1072757", res)
-            my_data = self.read_file()
-            my_request = TransferRequest(from_iban=iban_from,
-                                         to_iban=iban_to,
-                                         transfer_concept=transfer_concept,
-                                         transfer_date=transfer_date,
-                                         transfer_amount=transfer_amount,
-                                         transfer_type=transfer_type)
-            found = False
-            for k in my_data:
-                if k["transfer_code"] == res:
-                    found = True
-                    # this assert give me more information
-                    # about the differences than assertEqual
-                    self.assertDictEqual(k, my_request.to_json())
-            # if found is False , this assert fails
-            self.assertTrue(found)
+    @freeze_time("2025/03/22 13:00:00")
+    def test_transfer_for_tomorrow(self):
+        """test for a transfer tomorrow (using freezetime)"""
+        iban_from = "ES6211110783482828975098"
+        # From_iban;to_iban;concept;type;date;amount;RESULT
+        iban_to = "ES8658342044541216872704"
+        transfer_type = "ORDINARY"
+        transfer_amount = 10.0
+        transfer_date = "23/03/2025"
+        transfer_concept = "Testing duplicated transfers"
+        mngr = AccountManager()
+        res = mngr.transfer_request(from_iban=iban_from,
+                                    to_iban=iban_to,
+                                    transfer_type=transfer_type,
+                                    amount=transfer_amount,
+                                    date=transfer_date,
+                                    concept=transfer_concept)
+        self.assertEqual("b04ac19f692944771fc66c97b1072757", res)
+        my_data = self.read_file()
+        my_request = TransferRequest(from_iban=iban_from,
+                                     to_iban=iban_to,
+                                     transfer_concept=transfer_concept,
+                                     transfer_date=transfer_date,
+                                     transfer_amount=transfer_amount,
+                                     transfer_type=transfer_type)
+        found = False
+        for k in my_data:
+            if k["transfer_code"] == res:
+                found = True
+                # this assert give me more information
+                # about the differences than assertEqual
+                self.assertDictEqual(k, my_request.to_json())
+        # if found is False , this assert fails
+        self.assertTrue(found)
 
     @freeze_time("2025/03/26 13:00:00")
     def test_transfer_yesterday_test(self):

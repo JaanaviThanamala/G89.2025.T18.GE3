@@ -2,4 +2,6 @@ venv*
 .venv*
 .idea
 .pybuilder
-target
+target/*
+!target/reports/
+!target/reports/*.xml
