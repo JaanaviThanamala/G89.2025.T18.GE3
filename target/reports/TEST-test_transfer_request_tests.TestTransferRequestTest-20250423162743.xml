@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test_transfer_request_tests.TestTransferRequestTest-20250423162743" tests="8" file="test_transfer_request_tests.py" time="0.145" timestamp="2025-04-23T16:27:43" failures="6" errors="0" skipped="0">
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_duplicated_transfer_test" time="0.004" timestamp="2025-04-23T16:27:43"/>
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_transfer_yesterday_test" time="0.004" timestamp="2025-04-23T16:27:43"/>
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_parametrized_cases_tests [TC1VALID]" time="0.000" timestamp="0001-01-01T00:00:00">
+		<failure type="AssertionError" message="{'fro[44 chars]n': 'valid text', 'transfer_type': 'ES86583420[180 chars]da1'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[180 chars]203'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1735650000.0,
+-  'to_iban': 'valid text',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 10.0,
+-  'transfer_code': '68eba1e4d670bdc5680ca993c1b9fda1',
+-  'transfer_concept': 'ORDINARY',
++  'transfer_code': 'a7f66d1412a6d7cf3ac8b2f3e15e9203',
++  'transfer_concept': 'valid text',
+   'transfer_date': '01/01/2025',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'ORDINARY'}"><![CDATA[Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 58, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 539, in subTest
+    yield
+  File "/Users/aryanverma/Desktop/code/G89.2025.T18.GE3/src/unittest/python/test_transfer_request_tests.py", line 85, in test_parametrized_cases_tests
+    self.assertDictEqual(k, my_request.to_json())
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 1184, in assertDictEqual
+    self.fail(self._formatMessage(msg, standardMsg))
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 715, in fail
+    raise self.failureException(msg)
+    ^^^^^^^^^^^^^^^^^
+AssertionError: {'fro[44 chars]n': 'valid text', 'transfer_type': 'ES86583420[180 chars]da1'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[180 chars]203'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1735650000.0,
+-  'to_iban': 'valid text',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 10.0,
+-  'transfer_code': '68eba1e4d670bdc5680ca993c1b9fda1',
+-  'transfer_concept': 'ORDINARY',
++  'transfer_code': 'a7f66d1412a6d7cf3ac8b2f3e15e9203',
++  'transfer_concept': 'valid text',
+   'transfer_date': '01/01/2025',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'ORDINARY'}
+]]></failure>
+	</testcase>
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_parametrized_cases_tests [TC2VALID]" time="0.000" timestamp="0001-01-01T00:00:00">
+		<failure type="AssertionError" message="{'fro[44 chars]n': 'valid texts', 'transfer_type': 'ES8658342[180 chars]e5b'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[180 chars]45e'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1735650000.0,
+-  'to_iban': 'valid texts',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 10.01,
+-  'transfer_code': 'd4f0c8f233a8aa8218c3eebe77688e5b',
+-  'transfer_concept': 'URGENT',
++  'transfer_code': '601aaaafe56673eca8f69cf58ff2145e',
++  'transfer_concept': 'valid texts',
+   'transfer_date': '02/02/2026',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'URGENT'}"><![CDATA[Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 58, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 539, in subTest
+    yield
+  File "/Users/aryanverma/Desktop/code/G89.2025.T18.GE3/src/unittest/python/test_transfer_request_tests.py", line 85, in test_parametrized_cases_tests
+    self.assertDictEqual(k, my_request.to_json())
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 1184, in assertDictEqual
+    self.fail(self._formatMessage(msg, standardMsg))
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 715, in fail
+    raise self.failureException(msg)
+    ^^^^^^^^^^^^^^^^^
+AssertionError: {'fro[44 chars]n': 'valid texts', 'transfer_type': 'ES8658342[180 chars]e5b'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[180 chars]45e'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1735650000.0,
+-  'to_iban': 'valid texts',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 10.01,
+-  'transfer_code': 'd4f0c8f233a8aa8218c3eebe77688e5b',
+-  'transfer_concept': 'URGENT',
++  'transfer_code': '601aaaafe56673eca8f69cf58ff2145e',
++  'transfer_concept': 'valid texts',
+   'transfer_date': '02/02/2026',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'URGENT'}
+]]></failure>
+	</testcase>
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_parametrized_cases_tests [TC3VALID]" time="0.000" timestamp="0001-01-01T00:00:00">
+		<failure type="AssertionError" message="{'fro[44 chars]n': 'valid text withtwospacesinside', 'transfe[204 chars]224'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[204 chars]ad7'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1735650000.0,
+-  'to_iban': 'valid text withtwospacesinside',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 9999.99,
+-  'transfer_code': '14354246210ce0404cb115fbbaee2224',
+-  'transfer_concept': 'INMEDIATE',
++  'transfer_code': 'b67d59ecd12a34e468fb3d56503f0ad7',
++  'transfer_concept': 'valid text withtwospacesinside',
+   'transfer_date': '30/11/2049',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'INMEDIATE'}"><![CDATA[Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 58, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 539, in subTest
+    yield
+  File "/Users/aryanverma/Desktop/code/G89.2025.T18.GE3/src/unittest/python/test_transfer_request_tests.py", line 85, in test_parametrized_cases_tests
+    self.assertDictEqual(k, my_request.to_json())
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 1184, in assertDictEqual
+    self.fail(self._formatMessage(msg, standardMsg))
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 715, in fail
+    raise self.failureException(msg)
+    ^^^^^^^^^^^^^^^^^
+AssertionError: {'fro[44 chars]n': 'valid text withtwospacesinside', 'transfe[204 chars]224'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[204 chars]ad7'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1735650000.0,
+-  'to_iban': 'valid text withtwospacesinside',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 9999.99,
+-  'transfer_code': '14354246210ce0404cb115fbbaee2224',
+-  'transfer_concept': 'INMEDIATE',
++  'transfer_code': 'b67d59ecd12a34e468fb3d56503f0ad7',
++  'transfer_concept': 'valid text withtwospacesinside',
+   'transfer_date': '30/11/2049',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'INMEDIATE'}
+]]></failure>
+	</testcase>
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_parametrized_cases_tests [TC4VALID]" time="0.130" timestamp="2025-04-23T16:27:43">
+		<failure type="AssertionError" message="{'fro[44 chars]n': 'valid textuptotwentyninechars', 'transfer[202 chars]f17'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[202 chars]41a'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1735650000.0,
+-  'to_iban': 'valid textuptotwentyninechars',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 10000.0,
+-  'transfer_code': '211316152cae9171ac92c2f160e4df17',
+-  'transfer_concept': 'ORDINARY',
++  'transfer_code': '3a0a41624a015d0053200a04e900941a',
++  'transfer_concept': 'valid textuptotwentyninechars',
+   'transfer_date': '31/12/2050',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'ORDINARY'}"><![CDATA[Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 58, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 539, in subTest
+    yield
+  File "/Users/aryanverma/Desktop/code/G89.2025.T18.GE3/src/unittest/python/test_transfer_request_tests.py", line 85, in test_parametrized_cases_tests
+    self.assertDictEqual(k, my_request.to_json())
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 1184, in assertDictEqual
+    self.fail(self._formatMessage(msg, standardMsg))
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 715, in fail
+    raise self.failureException(msg)
+    ^^^^^^^^^^^^^^^^^
+AssertionError: {'fro[44 chars]n': 'valid textuptotwentyninechars', 'transfer[202 chars]f17'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[202 chars]41a'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1735650000.0,
+-  'to_iban': 'valid textuptotwentyninechars',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 10000.0,
+-  'transfer_code': '211316152cae9171ac92c2f160e4df17',
+-  'transfer_concept': 'ORDINARY',
++  'transfer_code': '3a0a41624a015d0053200a04e900941a',
++  'transfer_concept': 'valid textuptotwentyninechars',
+   'transfer_date': '31/12/2050',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'ORDINARY'}
+]]></failure>
+	</testcase>
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_transfer_for_today" time="0.004" timestamp="2025-04-23T16:27:43">
+		<failure type="AssertionError" message="{'fro[44 chars]n': 'Testing duplicated transfers', 'transfer_[198 chars]c9d'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[198 chars]9ba'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1742648400.0,
+-  'to_iban': 'Testing duplicated transfers',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 10.0,
+-  'transfer_code': '5e607a48c4cfd0a4276172d253427c9d',
+-  'transfer_concept': 'ORDINARY',
++  'transfer_code': '4330d428e3e87964287fa8e2a3d619ba',
++  'transfer_concept': 'Testing duplicated transfers',
+   'transfer_date': '22/03/2025',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'ORDINARY'}"><![CDATA[Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 58, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 634, in run
+    self._callTestMethod(testMethod)
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    if method() is not None:
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/freezegun/api.py", line 885, in wrapper
+    result = func(*args, **kwargs)
+    ^^^^^^^^^^^^^^^^^
+  File "/Users/aryanverma/Desktop/code/G89.2025.T18.GE3/src/unittest/python/test_transfer_request_tests.py", line 191, in test_transfer_for_today
+    self.assertDictEqual(k, my_request.to_json())
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 1184, in assertDictEqual
+    self.fail(self._formatMessage(msg, standardMsg))
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 715, in fail
+    raise self.failureException(msg)
+    ^^^^^^^^^^^^^^^^^
+AssertionError: {'fro[44 chars]n': 'Testing duplicated transfers', 'transfer_[198 chars]c9d'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[198 chars]9ba'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1742648400.0,
+-  'to_iban': 'Testing duplicated transfers',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 10.0,
+-  'transfer_code': '5e607a48c4cfd0a4276172d253427c9d',
+-  'transfer_concept': 'ORDINARY',
++  'transfer_code': '4330d428e3e87964287fa8e2a3d619ba',
++  'transfer_concept': 'Testing duplicated transfers',
+   'transfer_date': '22/03/2025',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'ORDINARY'}
+]]></failure>
+	</testcase>
+	<testcase classname="test_transfer_request_tests.TestTransferRequestTest" name="test_transfer_for_tomorrow" time="0.004" timestamp="2025-04-23T16:27:43">
+		<failure type="AssertionError" message="{'fro[44 chars]n': 'Testing duplicated transfers', 'transfer_[198 chars]02e'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[198 chars]a03'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1742648400.0,
+-  'to_iban': 'Testing duplicated transfers',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 10.0,
+-  'transfer_code': '7855aec0af5f471d22e4cd54a350a02e',
+-  'transfer_concept': 'ORDINARY',
++  'transfer_code': '36851b1407ecc89db81596f8cb56da03',
++  'transfer_concept': 'Testing duplicated transfers',
+   'transfer_date': '23/03/2025',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'ORDINARY'}"><![CDATA[Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 58, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 634, in run
+    self._callTestMethod(testMethod)
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    if method() is not None:
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/freezegun/api.py", line 885, in wrapper
+    result = func(*args, **kwargs)
+    ^^^^^^^^^^^^^^^^^
+  File "/Users/aryanverma/Desktop/code/G89.2025.T18.GE3/src/unittest/python/test_transfer_request_tests.py", line 226, in test_transfer_for_tomorrow
+    self.assertDictEqual(k, my_request.to_json())
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 1184, in assertDictEqual
+    self.fail(self._formatMessage(msg, standardMsg))
+    ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 715, in fail
+    raise self.failureException(msg)
+    ^^^^^^^^^^^^^^^^^
+AssertionError: {'fro[44 chars]n': 'Testing duplicated transfers', 'transfer_[198 chars]02e'} != {'fro[44 chars]n': 'ES8658342044541216872704', 'transfer_type[198 chars]a03'}
+  {'from_iban': 'ES6211110783482828975098',
+   'time_stamp': 1742648400.0,
+-  'to_iban': 'Testing duplicated transfers',
++  'to_iban': 'ES8658342044541216872704',
+   'transfer_amount': 10.0,
+-  'transfer_code': '7855aec0af5f471d22e4cd54a350a02e',
+-  'transfer_concept': 'ORDINARY',
++  'transfer_code': '36851b1407ecc89db81596f8cb56da03',
++  'transfer_concept': 'Testing duplicated transfers',
+   'transfer_date': '23/03/2025',
+-  'transfer_type': 'ES8658342044541216872704'}
++  'transfer_type': 'ORDINARY'}
+]]></failure>
+	</testcase>
+</testsuite>

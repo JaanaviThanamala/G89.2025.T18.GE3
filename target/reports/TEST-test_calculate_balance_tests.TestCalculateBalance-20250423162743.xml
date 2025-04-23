@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test_calculate_balance_tests.TestCalculateBalance-20250423162743" tests="7" file="test_calculate_balance_tests.py" time="0.007" timestamp="2025-04-23T16:27:43" failures="0" errors="0" skipped="0">
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_balance_file_not_json" time="0.002" timestamp="2025-04-23T16:27:43"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_calculate_balance_1" time="0.003" timestamp="2025-04-23T16:27:43"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_file_iban_not_found" time="0.001" timestamp="2025-04-23T16:27:43"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_file_not_found" time="0.000" timestamp="2025-04-23T16:27:43"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_file_not_json" time="0.000" timestamp="2025-04-23T16:27:43"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_file_skip_loop" time="0.001" timestamp="2025-04-23T16:27:43"/>
+	<testcase classname="test_calculate_balance_tests.TestCalculateBalance" name="test_file_wrong_iban_number" time="0.000" timestamp="2025-04-23T16:27:43"/>
+</testsuite>
